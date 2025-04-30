@@ -109,82 +109,26 @@ also utilize some SPE providers such as [Helius](https://www.helius.dev/),
 [Triton](https://triton.one/), or [Edgevana](https://www.edgevana.com/) to
 deploy your SPE.
 
-### How to Deploy a SPE Locally
+## How to get started with SPEs
 
-#### Prerequisites
+ABK labs ahs provided a demo of a single validator SPE that you can spin up 
+locally. 
 
-Before proceeding, ensure that Docker is installed on your system. Docker is
-essential for creating a contained and controlled environment for your SPE,
-facilitating ease of deployment and management. If you haven't installed Docker
-yet, please follow the installation guide for your respective operating system
-at the [official Docker documentation](https://docs.docker.com/get-docker/).
+This demo includes an RPC service and the use of token extensions. It is 
+meant to be a good base to build off of for your SPE offering
 
-#### Setting Up Your SPE
 
-The process of setting up a Solana Permissioned Environment locally involves
-cloning the repository, understanding its structure, and executing the necessary
-commands to get your SPE running. The repository containing all necessary
-components and instructions is hosted on GitHub, managed by `monogon`. You can
-find the repository [here](https://github.com/monogon-dev/solana-spe).
+### Dependencies for demo
+- pulumi
+- docker
+- rustc + cargo
+- node + npm
+- gzip
+- protoc
 
-#### Step 1: Clone the Repository
+### Demo link
 
-Open your terminal and clone the `solana-spe` repository using the following Git
-command:
-
-```sh
-git clone https://github.com/monogon-dev/solana-spe.git
-```
-
-Navigate to the cloned repository's directory:
-
-```sh
-cd solana-spe
-```
-
-#### Step 2: Understanding the Repository Structure
-
-Before proceeding with the deployment, familiarize yourself with the
-repository's structure by reviewing the README file. This document provides an
-overview of the project, including its purpose, configuration options, and
-detailed instructions for setting up your SPE.
-
-#### Step 3: Deploying with Docker
-
-With Docker installed and the repository cloned, you're ready to deploy your
-SPE. The repository includes a Dockerfile and docker-compose files that define
-the SPE's environment, ensuring a seamless setup process.
-
-Execute the following command to build and start your SPE using Docker:
-
-```sh
-docker-compose up --build
-```
-
-This command initiates the building process of the Docker image based on the
-provided Dockerfile and starts the SPE once the build is complete. The `--build`
-option ensures that Docker rebuilds the image, incorporating any changes you
-might have made to the configuration or Dockerfile.
-
-#### Step 4: Verifying the Deployment
-
-Once the Docker containers are up and running, you can verify the successful
-deployment of your SPE by accessing the Solana CLI or any web interface provided
-for interaction with the SPE. The README file in the repository should offer
-guidance on performing basic operations and verifying the network's
-functionality.
-
-#### Customizing Your SPE
-
-The SPE's configuration can be tailored to meet specific requirements. Explore
-the the `.env` file within the repository to adjust parameters such as ports,
-solana version, consensus mechanism, network permissions, and transaction
-processing limits.
-
-For more detailed customization, refer to the
-[Solana documentation](/docs) and the README file in the
-repository, which may provide insights into advanced configuration and
-optimization techniques suitable for enterprise applications.
+https://github.com/abklabs/svmkit-vixen-grpc-demo
 
 ## Conclusion
 
