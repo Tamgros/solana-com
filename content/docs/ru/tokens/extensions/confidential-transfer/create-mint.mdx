@@ -1,14 +1,14 @@
 ---
 title: Создание токен-минта
 description:
-  "Узнайте, как создать токен-минт с расширением Confidential Transfer."
+  Узнайте, как создать токен-минт с расширением Confidential Transfer.
 ---
 
 ## Как создать mint с расширением Confidential Transfer
 
 Расширение Confidential Transfer обеспечивает приватные переводы токенов,
 добавляя дополнительное состояние в mint account. В этом разделе объясняется,
-как создать token mint с включенным расширением.
+как создать токен mint с включенным расширением.
 
 Следующая диаграмма показывает шаги, необходимые для создания mint с расширением
 Confidential Transfer:
@@ -27,9 +27,9 @@ sequenceDiagram
 
 ### Состояние Confidential Transfer Mint
 
-Расширение добавляет состояние
+Расширение добавляет
 [ConfidentialTransferMint](https://github.com/solana-program/token-2022/blob/efd0c957fefbd79882d77df5fb2dac88c001249c/program/src/extension/confidential_transfer/mod.rs#L48-L69)
-в mint account:
+состояние в mint account:
 
 ```rust title="Confidential Mint State"
 #[repr(C)]
@@ -55,12 +55,11 @@ pub struct ConfidentialTransferMint {
 }
 ```
 
-_rs`ConfidentialTransferMint`_ содержит три
-поля конфигурации:
+_rs`ConfidentialTransferMint`_ содержит три поля конфигурации:
 
-- **authority**: Аккаунт, который имеет разрешение изменять настройки
-  конфиденциальных переводов для mint и одобрять новые конфиденциальные
-  аккаунты, если автоматическое одобрение отключено.
+- **authority**: Аккаунт, который имеет разрешение на изменение настроек
+  конфиденциальных переводов для mint и одобрение новых конфиденциальных
+  аккаунтов, если автоматическое одобрение отключено.
 
 - **auto_approve_new_accounts**: Когда установлено значение true, пользователи
   могут создавать token accounts с включенными конфиденциальными переводами по
@@ -69,7 +68,7 @@ _rs`ConfidentialTransferMint`_ содержит три
 
 - **auditor_elgamal_pubkey**: Опциональный аудитор, который может расшифровывать
   суммы переводов в конфиденциальных транзакциях, обеспечивая механизм
-  соответствия требованиям при сохранении приватности от широкой общественности.
+  соответствия при сохранении приватности от широкой общественности.
 
 ### Необходимые инструкции
 
@@ -77,24 +76,20 @@ _rs`ConfidentialTransferMint`_ содержит три
 транзакции:
 
 1. **Создание Mint Account**: Вызов инструкции System Program
-   _rs`CreateAccount`_ для
-   создания mint account.
+   _rs`CreateAccount`_ для создания mint account.
 
 2. **Инициализация расширения Confidential Transfer**: Вызов инструкции Token
    Extensions Program
    [ConfidentialTransferInstruction::InitializeMint](https://github.com/solana-program/token-2022/blob/efd0c957fefbd79882d77df5fb2dac88c001249c/program/src/extension/confidential_transfer/processor.rs#L48)
-   для настройки состояния
-   _rs`ConfidentialTransferMint`_ для mint.
+   для настройки состояния _rs`ConfidentialTransferMint`_ для mint.
 
 3. **Инициализация Mint**: Вызов инструкции Token Extensions Program
-   _rs`Instruction::InitializeMint`_ для
-   инициализации стандартного состояния mint.
+   _rs`Instruction::InitializeMint`_ для инициализации стандартного состояния
+   mint.
 
-Хотя вы могли бы написать эти инструкции вручную, крейт
-`spl_token_client` предоставляет
-метод `create_mint`, который
-создает и отправляет транзакцию со всеми тремя инструкциями в одном вызове
-функции, как показано в примере ниже.
+Хотя вы могли бы написать эти инструкции вручную, крейт `spl_token_client`
+предоставляет метод `create_mint`, который создает и отправляет транзакцию со
+всеми тремя инструкциями в одном вызове функции, как показано в примере ниже.
 
 ### Пример кода
 

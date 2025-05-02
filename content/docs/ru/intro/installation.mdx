@@ -1,7 +1,7 @@
 ---
 title: Установка
 seoTitle: Установка Solana CLI и Anchor
-description: >-
+description:
   Руководство по настройке локальной среды разработки Solana. Узнайте, как
   установить Rust, Solana CLI и фреймворк Anchor на Windows (WSL), Linux и Mac.
 ---
@@ -20,8 +20,8 @@ $ curl --proto '=https' --tlsv1.2 -sSfL https://solana-install.solana.workers.de
 
 <Callout type="warn">
   Пользователи Windows: сначала вы должны установить WSL (см. [Установка
-  зависимостей](#install-dependencies)). Затем выполните указанную выше команду
-  в терминале Ubuntu (Linux).
+  зависимостей](#install-dependencies)). Затем выполните предыдущую команду в
+  терминале Ubuntu (Linux).
 </Callout>
 
 После установки вы должны увидеть вывод, подобный следующему:
@@ -69,7 +69,7 @@ Linux.
 После установки WSL установите зависимости, указанные в разделе Linux ниже,
 прежде чем приступить к установке Rust, Solana CLI и Anchor CLI.
 
-Чтобы установить WSL, выполните следующую команду в Windows PowerShell:
+Для установки WSL выполните следующую команду в Windows PowerShell:
 
 ```terminal
 $ wsl --install
@@ -86,9 +86,8 @@ $ wsl --install
 ![WSL Ubuntu](/assets/docs/intro/installation/wsl-ubuntu-search.png)
 
 Если ваш терминал Ubuntu выглядит как на изображении ниже, вы можете столкнуться
-с проблемой, когда
-`ctrl + v` (сочетание клавиш
-для вставки) не работает в терминале.
+с проблемой, когда `ctrl + v` (сочетание клавиш для вставки) не работает в
+терминале.
 
 ![Терминал Ubuntu](/assets/docs/intro/installation/wsl-ubuntu-terminal-1.png)
 
@@ -98,9 +97,8 @@ $ wsl --install
 ![Windows Terminal](/assets/docs/intro/installation/wsl-windows-terminal.png)
 
 Затем закройте Windows Terminal и снова откройте терминал Linux, найдя Ubuntu.
-Теперь терминал должен выглядеть как на изображении ниже, где
-`ctrl + v` (сочетание клавиш
-для вставки) работает.
+Теперь терминал должен выглядеть как на изображении ниже, где `ctrl + v`
+(сочетание клавиш для вставки) работает.
 
 ![Терминал Ubuntu](/assets/docs/intro/installation/wsl-ubuntu-terminal-2.png)
 
@@ -117,7 +115,7 @@ $ wsl --install
 После настройки WSL установите все остальные зависимости через терминал Ubuntu
 (Linux).
 
-Чтобы установить необходимые зависимости Solana, сначала попробуйте выполнить
+Для установки необходимых зависимостей Solana сначала попробуйте выполнить
 команду [быстрой установки](#quick-installation) в терминале Ubuntu (Linux).
 
 <Callout>
@@ -142,30 +140,28 @@ Solana CLI и Anchor CLI.
 Обновите списки пакетов, чтобы получить более новые версии пакетов, выполнив
 команду.
 
-  ```terminal
-  $ sudo apt-get update
-  ```
+```terminal
+$ sudo apt-get update
+```
 
-Далее, установите следующие зависимости:
+Далее установите следующие зависимости:
 
-  ```terminal
-  $ sudo apt-get install -y \
-      build-essential \
-      pkg-config \
-      libudev-dev llvm libclang-dev \
-      protobuf-compiler libssl-dev
-  ```
+```terminal
+$ sudo apt-get install -y \
+    build-essential \
+    pkg-config \
+    libudev-dev llvm libclang-dev \
+    protobuf-compiler libssl-dev
+```
 
-Если вы столкнетесь со следующей ошибкой при установке
-`protobuf-compiler`, убедитесь, что
-сначала выполнили
-_shell`sudo apt-get update`_:
+Если при установке `protobuf-compiler` вы столкнетесь со следующей ошибкой,
+убедитесь, что сначала выполнили _shell`sudo apt-get update`_:
 
-  ```
-  Package protobuf-compiler is not available, but is referred to by another package.
-  This may mean that the package is missing, has been obsoleted, or
-  is only available from another source
-  ```
+```
+Package protobuf-compiler is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+```
 
   </Tab>
 
@@ -175,16 +171,16 @@ _shell`sudo apt-get update`_:
 Обновите списки пакетов, чтобы получить более новые версии пакетов, выполнив
 команду.
 
-  ```terminal
-  $ sudo dnf upgrade --refresh
-  ```
+```terminal
+$ sudo dnf upgrade --refresh
+```
 
-Далее, установите следующие зависимости:
+Далее установите следующие зависимости:
 
-  ```terminal
-  $ sudo dnf group install c-development development-tools \
-  && sudo dnf install pkg-config openssl-devel
-  ```
+```terminal
+$ sudo dnf group install c-development development-tools \
+&& sudo dnf install pkg-config openssl-devel
+```
 
   </Tab>
 </Tabs>
@@ -265,18 +261,12 @@ Solana CLI предоставляет все инструменты, необх�
 $ sh -c "$(curl -sSfL https://release.anza.xyz/stable/install)"
 ```
 
-Вы можете заменить
-`stable` на тег релиза,
-соответствующий версии программного обеспечения желаемого выпуска (например,
-`v2.0.3`), или
-использовать одно из трех символических имен каналов:
-`stable`,
-`beta` или
-`edge`.
+Вы можете заменить `stable` на тег релиза, соответствующий версии программного
+обеспечения желаемого выпуска (например, `v2.0.3`), или использовать одно из
+трех символических имен каналов: `stable`, `beta` или `edge`.
 
 При первой установке Solana CLI вы можете увидеть следующее сообщение,
-предлагающее добавить переменную окружения
-`PATH`:
+предлагающее добавить переменную окружения `PATH`:
 
 ```
 Close and reopen your terminal to apply the PATH changes or run the following in your existing shell:
@@ -288,8 +278,7 @@ export PATH="/Users/test/.local/share/solana/install/active_release/bin:$PATH"
 <Tab value="Linux">
 
 Если вы используете **Linux** или **WSL**, вам необходимо добавить бинарный файл
-Solana CLI в ваш `PATH`,
-чтобы команда была доступна в вашем терминале.
+Solana CLI в ваш `PATH`, чтобы команда была доступна в вашем терминале.
 
 Сначала выполните следующую команду, чтобы проверить, какую оболочку вы
 используете:
@@ -298,12 +287,8 @@ Solana CLI в ваш `PATH`,
 $ echo $SHELL
 ```
 
-- Если вывод содержит
-  `/bash`, используйте
-  `.bashrc`.
-- Если вывод содержит
-  `/zsh`, используйте
-  `.zshrc`.
+- Если вывод содержит `/bash`, используйте `.bashrc`.
+- Если вывод содержит `/zsh`, используйте `.zshrc`.
 
 В зависимости от вашей оболочки выполните соответствующую команду.
 
@@ -332,11 +317,8 @@ $ source ~/.zshrc # If using Zsh
 </Tab>
 <Tab value="Mac">
 
-Если вы используете Mac с
-`zsh`, запуск
-стандартной команды
-`export PATH`, полученной при
-установке, не сохраняется после закрытия терминала.
+Если вы используете Mac с `zsh`, выполнение стандартной команды `export PATH`,
+записанной при установке, не сохраняется после закрытия терминала.
 
 Вместо этого вы можете добавить PATH в файл конфигурации оболочки, выполнив
 следующую команду:
@@ -432,16 +414,11 @@ $ avm use 0.30.1
 
 <Callout type="info">
 
-Не забудьте выполнить команду
-_shell`avm use`_, чтобы
-указать версию Anchor CLI для запуска в вашей системе.
+Не забудьте выполнить команду _shell`avm use`_, чтобы указать версию Anchor CLI
+для запуска в вашей системе.
 
-- Если вы установили версию
-  `latest`, выполните
-  _shell`avm use latest`_.
-- Если вы установили версию
-  `0.30.1`, выполните
-  _shell`avm use 0.30.1`_.
+- Если вы установили версию `latest`, выполните _shell`avm use latest`_.
+- Если вы установили версию `0.30.1`, выполните _shell`avm use 0.30.1`_.
 
 </Callout>
 
@@ -464,7 +441,7 @@ $ cargo install --git https://github.com/coral-xyz/anchor --tag v0.30.1 anchor-c
 $ anchor --version
 ```
 
-Вы должны увидеть примерно следующий вывод:
+Вы должны увидеть вывод, подобный следующему:
 
 ```
 anchor-cli 0.31.1
@@ -490,9 +467,8 @@ error: could not exec the linker cc = note: Permission denied (os error 13)
 #### Node.js и Yarn
 
 Файл тестирования проекта Anchor по умолчанию (TypeScript), созданный с помощью
-команды _shell`anchor init`_,
-требует Node.js и Yarn. (Шаблон теста на Rust доступен с использованием
-_shell`anchor init --test-template rust`_)
+команды _shell`anchor init`_, требует Node.js и Yarn. (Шаблон теста на Rust
+доступен с помощью _shell`anchor init --test-template rust`_)
 
 <Accordions>
 <Accordion title="Установка Node">
@@ -512,8 +488,7 @@ $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 $ command -v nvm
 ```
 
-Затем используйте `nvm`
-для установки node:
+Затем используйте `nvm` для установки node:
 
 ```terminal
 $ nvm install node
@@ -525,7 +500,7 @@ $ nvm install node
 $ node --version
 ```
 
-Вы должны увидеть примерно следующий вывод:
+Вы должны увидеть вывод, подобный следующему:
 
 ```
 v23.7.0
@@ -557,8 +532,7 @@ $ yarn --version
 
 <Callout type="warn">
 
-При запуске `anchor build`, если
-вы столкнетесь со следующими ошибками:
+При запуске `anchor build`, если вы столкнетесь со следующими ошибками:
 
 <Accordions>
 <Accordion title="error: not a directory">
@@ -591,7 +565,7 @@ $ rm -rf ~/.cache/solana/*
 +version = 3
 ```
 
-Смотрите [эту проблему](https://github.com/coral-xyz/anchor/issues/3392) для
+Смотрите [этот issue](https://github.com/coral-xyz/anchor/issues/3392) для
 получения дополнительной информации.
 
 </Accordion>
@@ -605,10 +579,9 @@ _shell`anchor build`_.
 
 <Callout type="warn">
 
-При запуске
-_shell`anchor test`_ после
-создания нового проекта Anchor на Linux или WSL, вы можете столкнуться со
-следующими ошибками, если у вас не установлены Node.js или Yarn:
+При запуске _shell`anchor test`_ после создания нового проекта Anchor на Linux
+или WSL, вы можете столкнуться со следующими ошибками, если у вас не установлены
+Node.js или Yarn:
 
 ```
 Permission denied (os error 13)
@@ -633,7 +606,7 @@ No such file or directory (os error 2)
 
 ### Конфигурация Solana
 
-Чтобы увидеть вашу текущую конфигурацию:
+Чтобы просмотреть текущую конфигурацию:
 
 ```terminal
 $ solana config get
@@ -649,8 +622,8 @@ Keypair Path: /Users/test/.config/solana/id.json
 Commitment: confirmed
 ```
 
-URL-адрес RPC и URL-адрес Websocket указывают кластер Solana, к которому CLI
-отправляет запросы.
+RPC URL и Websocket URL указывают кластер Solana, к которому CLI отправляет
+запросы.
 
 Вы можете обновить кластер Solana CLI, используя следующие команды:
 
@@ -672,8 +645,7 @@ $ solana config set -ut    # For testnet
 
 Путь к keypair указывает на кошелек Solana по умолчанию (keypair), используемый
 CLI Solana для оплаты комиссий за транзакции и развертывания программ. По
-умолчанию этот файл хранится в
-`~/.config/solana/id.json`.
+умолчанию этот файл хранится в `~/.config/solana/id.json`.
 
 </Step>
 <Step>
@@ -712,9 +684,9 @@ cream bleak tortoise ocean nasty game gift forget fancy salon mimic amazing
 
 <Callout type="info">
 
-Если у вас уже есть кошелек файловой системы, сохраненный в месте по умолчанию,
-эта команда не перезапишет его, если вы явно не принудите перезапись с помощью
-флага `--force`.
+Если у вас уже есть кошелек в файловой системе, сохраненный в месте по
+умолчанию, эта команда не перезапишет его, если вы явно не укажете флаг
+`--force`.
 
 </Callout>
 
@@ -761,14 +733,14 @@ $ solana balance
 </Step>
 <Step>
 
-### Запустите локальный validator
+### Запустите локальный валидатор
 
 Solana CLI включает встроенный
 [тестовый validator](https://docs.anza.xyz/cli/examples/test-validator) для
 локальной разработки.
 
 В отдельном терминале выполните следующую команду для запуска локального
-validator:
+валидатора:
 
 ```terminal
 $ solana-test-validator
@@ -805,8 +777,7 @@ $ solana config set -ul
 $ anchor init <project-name>
 ```
 
-Например, чтобы создать проект с названием
-`my-project`, выполните:
+Например, чтобы создать проект с названием `my-project`, выполните:
 
 ```terminal
 $ anchor init my-project
@@ -830,29 +801,26 @@ $ cd <project-name>
 <Step>
 ### Сборка программы
 
-Для сборки вашего проекта выполните следующую команду:
+Для сборки проекта выполните следующую команду:
 
 ```terminal
 $ anchor build
 ```
 
-Скомпилированную программу можно найти в директории
-`/target/deploy`.
+Скомпилированную программу можно найти в директории `/target/deploy`.
 
 </Step>
 <Step>
 
 ### Развертывание программы
 
-Для развертывания вашего проекта выполните следующую команду:
+Для развертывания проекта выполните следующую команду:
 
 ```terminal
 $ anchor deploy
 ```
 
-Эта команда развертывает вашу программу в
-`cluster`, указанном в
-файле
+Эта команда развертывает вашу программу в `cluster`, указанном в файле
 [`Anchor.toml`](https://www.anchor-lang.com/docs/references/anchor-toml).
 
 </Step>
@@ -860,7 +828,7 @@ $ anchor deploy
 
 ### Тестирование программы
 
-Для тестирования вашего проекта выполните следующую команду:
+Для тестирования проекта выполните следующую команду:
 
 ```terminal
 $ anchor test
@@ -870,9 +838,7 @@ $ anchor test
 
 Эта команда собирает, развертывает и запускает тесты для вашего проекта.
 
-При использовании `localnet`
-в качестве `cluster` в
-`Anchor.toml`, Anchor
+При использовании `localnet` в качестве `cluster` в `Anchor.toml`, Anchor
 автоматически запускает локальный validator, развертывает вашу программу,
 запускает тесты и затем останавливает validator.
 

@@ -1,6 +1,6 @@
 ---
 title: Program Derived Address
-description: >-
+description:
   了解 Solana 上的 Program Derived Address
   (PDA)——一种用于安全程序签名的确定性账户地址。了解 PDA 的推导、规范化 bump
   以及如何创建 PDA 账户。
@@ -63,11 +63,11 @@ PDA 可以作为链上账户的地址（唯一标识符），提供一种轻松�
 
 使用相应 SDK 中的以下函数来生成 PDA。
 
-| SDK                                                                         | 功能                                                                                                                                                                 |
-| --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@solana/kit` (Typescript) | [`getProgramDerivedAddress`](https://github.com/anza-xyz/kit/blob/v2.1.0/packages/addresses/src/program-derived-address.ts#L157) |
-| `@solana/web3.js` (Typescript) | [`findProgramAddressSync`](https://github.com/solana-foundation/solana-web3.js/blob/v1.98.0/src/publickey.ts#L212)             |
-| `solana_sdk` (Rust)       | [`find_program_address`](https://github.com/anza-xyz/solana-sdk/blob/sdk%40v2.2.2/pubkey/src/lib.rs#L617)                    |
+| SDK                            | 功能                                                                                                                             |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| `@solana/kit` (Typescript)     | [`getProgramDerivedAddress`](https://github.com/anza-xyz/kit/blob/v2.1.0/packages/addresses/src/program-derived-address.ts#L157) |
+| `@solana/web3.js` (Typescript) | [`findProgramAddressSync`](https://github.com/solana-foundation/solana-web3.js/blob/v1.98.0/src/publickey.ts#L212)               |
+| `solana_sdk` (Rust)            | [`find_program_address`](https://github.com/anza-xyz/solana-sdk/blob/sdk%40v2.2.2/pubkey/src/lib.rs#L617)                        |
 
 要派生一个 PDA，请将以下输入提供给 SDK 函数：
 
@@ -355,8 +355,8 @@ bump 250: Provided seeds do not result in a valid address
 bump seed 255 会抛出错误，第一个推导出有效 PDA 的 bump seed 是 254。
 
 请注意，bump seed
-253-251 都能推导出有效的 PDA，但地址各不相同。这意味着在给定相同的可选种子和 `programId` 的情况下，不同值的 bump
-seed 仍然可以推导出有效的 PDA。
+253-251 都能推导出有效的 PDA，但地址各不相同。这意味着在给定相同的可选种子和
+`programId` 的情况下，不同值的 bump seed 仍然可以推导出有效的 PDA。
 
 <Callout type="warn">
   在构建 Solana 程序时，请务必包含安全检查，以确保传递给程序的 PDA 是从标准 bump
@@ -369,7 +369,9 @@ seed 仍然可以推导出有效的 PDA。
 以下示例程序展示了如何使用 PDA 作为新账户地址来创建账户。示例程序使用了
 [Anchor 框架](https://www.anchor-lang.com/docs)。
 
-该程序包含一个 `initialize` 指令，用于使用 PDA 作为账户地址创建新账户。新账户存储了 `user` 的地址以及用于推导 PDA 的 `bump` 种子。
+该程序包含一个 `initialize`
+指令，用于使用 PDA 作为账户地址创建新账户。新账户存储了 `user`
+的地址以及用于推导 PDA 的 `bump` 种子。
 
 <CodeTabs>
 
@@ -462,7 +464,8 @@ describe("pda-account", () => {
 
 </CodeTabs>
 
-在此示例中，用于 PDA 推导的种子包括固定字符串 `data` 和指令中提供的 `user` 账户地址。Anchor 框架会自动找到规范的 `bump` 种子。
+在此示例中，用于 PDA 推导的种子包括固定字符串 `data` 和指令中提供的 `user`
+账户地址。Anchor 框架会自动找到规范的 `bump` 种子。
 
 ```rust title="pda_account"
 #[account(
@@ -477,7 +480,8 @@ describe("pda-account", () => {
 pub pda_account: Account<'info, DataAccount>,
 ```
 
-`init` 约束指示 Anchor 调用系统程序，使用 PDA 作为地址创建一个新账户。Anchor 通过
+`init`
+约束指示 Anchor 调用系统程序，使用 PDA 作为地址创建一个新账户。Anchor 通过
 [CPI](/docs/core/cpi) 实现这一操作。
 
 ```rust title="pda_account"
@@ -502,7 +506,8 @@ const [PDA] = PublicKey.findProgramAddressSync(
 );
 ```
 
-测试文件中的交易调用了 `initialize` 指令，使用 PDA 作为地址创建一个新的链上账户。在此示例中，Anchor 可以从指令账户中推断出 PDA 地址，因此无需显式提供。
+测试文件中的交易调用了 `initialize`
+指令，使用 PDA 作为地址创建一个新的链上账户。在此示例中，Anchor 可以从指令账户中推断出 PDA 地址，因此无需显式提供。
 
 ```ts title="Invoke Initialize Instruction"
 it("Is initialized!", async () => {
@@ -528,4 +533,5 @@ it("Fetch Account", async () => {
 });
 ```
 
-请注意，在此示例中，如果您多次调用 `initialize` 指令，并使用相同的 `user` 地址作为种子，则交易会失败。这是因为在推导出的地址上已经存在一个账户。
+请注意，在此示例中，如果您多次调用 `initialize` 指令，并使用相同的 `user`
+地址作为种子，则交易会失败。这是因为在推导出的地址上已经存在一个账户。
